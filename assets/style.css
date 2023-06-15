@@ -1,0 +1,274 @@
+:root {
+	--dark: #374151;
+	--darker: #1F2937;
+	--darkest: #111827;
+	--grey: #6B7280;
+	--pink: #FF5757;
+	--purple: #8B5CF6;
+	--light: #EEE;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #FFF;
+    background-color: var(--dark);
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--light);
+}
+
+input[type="text"], button {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    
+}
+
+input::placeholder {
+    font-family: 'Poppins', sans-serif;
+}
+
+input:focus {
+    font-family: 'Poppins', sans-serif;
+}
+
+input {
+    padding: 1rem;
+    border-radius: 1rem;
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+}
+
+.to-do-app {
+    width: 100%;
+    display: flex;
+	flex-direction: column;
+    padding: 0 15rem;
+}
+
+.header {
+    width: 100%;
+}
+
+.header h1 {
+    width: 50%;
+    padding: 2rem 0 1rem 0;
+    font-size: 2.2rem;
+    background: linear-gradient(270deg, #7531FB 0%, #FF5757 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header .new-todo {
+    background-color: var(--darker);
+}
+
+.main {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 2px;
+}
+
+.todo-main {
+    position: relative;
+    margin-bottom: 1rem;
+}
+ 
+.view,
+.check-all {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.check-all {
+    margin-top: 2rem;
+    margin-left: 0.9rem;
+}
+  
+.view input[type="checkbox"],
+.check-all input {
+    display: none;
+}
+ 
+.view svg,
+.check-all svg {
+    overflow: visible;
+    height: 3rem;
+}
+
+.view svg {
+    height: 1.5rem;
+}
+  
+.path {
+    fill: none;
+    stroke: var(--pink);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+    stroke-dasharray: 241 9999999;
+    stroke-dashoffset: 0;
+}
+
+.completed .view .path {
+    stroke: var(--grey);
+}
+
+.completed .view input[type="text"] {
+    color: var(--grey);
+}
+
+.view .path {
+    stroke: var(--purple);
+}
+  
+.view input[type="checkbox"]:checked ~ svg .path,
+.check-all input[type="checkbox"]:checked ~ svg .path {
+    stroke-dasharray: 70.5096664428711 9999999;
+    stroke-dashoffset: -262.2723388671875;
+}
+
+
+.check-all p {
+    padding: 1rem;
+    font-weight: 600;
+    background: linear-gradient(270deg, #7531FB 0%, #FF5757 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.view {
+    background-color: var(--darkest);
+    margin-top: 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+.view .edit {
+    width: calc(100% - 148px);
+    color: var(--light);
+}
+
+.view input:disabled {
+    color: var(--purple);
+}
+
+.view button {
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 1rem;
+    font-weight: 600;
+}
+
+.view button:hover {
+    opacity: 0.8;
+}
+
+.view button.edit-btn {
+    color: var(--purple);
+}
+
+.view button.destroy {
+    color: var(--pink);
+}
+
+.view .btn {
+    position: absolute;
+    right: 2px;
+    background-color: var(--darkest);
+    border-radius: 2rem;
+}
+
+.footer {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 2px;
+    background-color: var(--darker);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.footer .filters {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer span {
+    color: var(--grey);
+}
+
+.footer .filters li {
+    padding: 0 1rem;
+    font-weight: 700;
+}
+
+.footer li:hover a {
+    color: var(--pink);
+}
+
+.footer .filters a {
+    color: var(--grey);
+}
+
+.footer .clear-completed:hover {
+    color: var(--pink);
+}
+
+.footer .clear-completed {
+    color: var(--grey);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.footer .filters li .selected {
+    color: var(--purple);
+}
+
+
+@media (min-width: 520px) and (max-width: 1024px) {
+    .to-do-app {
+        padding: 0 5rem;
+    }
+
+    .footer span,
+    .footer a {
+        font-size: 0.8rem;
+    }
+}
+
+
+@media (max-width: 520px) {
+    .to-do-app {
+        padding: 0 1rem;
+    }
+
+    .footer span,
+    .footer a {
+        font-size: 0.8rem;
+    }
+}
