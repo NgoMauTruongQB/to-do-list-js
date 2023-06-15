@@ -7,7 +7,8 @@ const init = {
         all: () => true,
         active: todo => !todo.completed,
         completed: todo => todo.completed,
-    }
+    },
+    editIndex: null,
 }
 
 const actions = {
@@ -32,6 +33,26 @@ const actions = {
     },
     switchFilter(state, filter) {
         state.filter = filter
+    },
+    clearCompleted(state) {
+        console.log(state)
+        state.todos = state.todos.filter(state.filters.active)
+        storage.set(state.todos)
+    },
+    startEdit(state, index) {
+        if(state.editIndex === null) {
+            state.editIndex = index
+        } else {
+            state.editIndex = null
+        }
+    },
+    endEdit(state, title) {
+        if(state.editIndex != null) {
+            state.todos[state.editIndex].title = title
+            state.editIndex = null
+            state.isEdited = true
+            storage.set(state.todos)
+        }
     }
 }
 
